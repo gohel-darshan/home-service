@@ -32,13 +32,13 @@ export default function ProfileBuilder() {
   const progress = (completed / 4) * 100;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-4xl mx-auto">
       <header className="bg-white p-4 flex items-center gap-4 shadow-sm">
         <button onClick={() => navigate('/worker/kyc/status')}><ArrowLeft className="w-6 h-6" /></button>
         <h1 className="font-bold text-lg">Complete Profile</h1>
       </header>
 
-      <div className="p-6 flex-1">
+      <div className="p-6 flex-1 max-w-2xl mx-auto">
         <div className="mb-6">
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div 
@@ -49,30 +49,32 @@ export default function ProfileBuilder() {
           <p className="text-right text-xs font-bold text-primary mt-1">{progress}% Completed</p>
         </div>
 
-        <Step 
-          title="Skills" 
-          desc="Add your expertise" 
-          done={hasSkills} 
-          onClick={() => navigate('/worker/profile/builder/skills')} 
-        />
-        <Step 
-          title="Services & Pricing" 
-          desc="Set your rates" 
-          done={hasServices} 
-          onClick={() => navigate('/worker/profile/builder/services')} 
-        />
-        <Step 
-          title="Availability" 
-          desc="Set working days" 
-          done={hasAvailability} 
-          onClick={() => navigate('/worker/profile/builder/availability')} 
-        />
-        <Step 
-          title="Portfolio" 
-          desc="Upload photos/videos" 
-          done={hasPortfolio} 
-          onClick={() => navigate('/worker/profile/builder/portfolio')} 
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <Step 
+            title="Skills" 
+            desc="Add your expertise" 
+            done={hasSkills} 
+            onClick={() => navigate('/worker/profile/builder/skills')} 
+          />
+          <Step 
+            title="Services & Pricing" 
+            desc="Set your rates" 
+            done={hasServices} 
+            onClick={() => navigate('/worker/profile/builder/services')} 
+          />
+          <Step 
+            title="Availability" 
+            desc="Set working days" 
+            done={hasAvailability} 
+            onClick={() => navigate('/worker/profile/builder/availability')} 
+          />
+          <Step 
+            title="Portfolio" 
+            desc="Upload photos/videos" 
+            done={hasPortfolio} 
+            onClick={() => navigate('/worker/profile/builder/portfolio')} 
+          />
+        </div>
       </div>
 
       <div className="p-4 bg-white border-t border-gray-200">

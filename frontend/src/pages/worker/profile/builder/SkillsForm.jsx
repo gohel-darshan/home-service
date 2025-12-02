@@ -37,13 +37,13 @@ export default function SkillsForm() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-4xl mx-auto">
       <header className="bg-white p-4 flex items-center gap-4 shadow-sm">
         <button onClick={() => navigate(-1)}><ArrowLeft className="w-6 h-6" /></button>
         <h1 className="font-bold text-lg">Add Skills</h1>
       </header>
 
-      <div className="p-6 flex-1">
+      <div className="p-6 flex-1 max-w-3xl mx-auto">
         <div className="mb-6">
           <label className="block text-sm font-medium text-text-muted mb-2">Selected Skills</label>
           <div className="flex flex-wrap gap-2 min-h-[50px] p-3 bg-white rounded-xl border border-gray-200">
@@ -78,7 +78,7 @@ export default function SkillsForm() {
 
         <form onSubmit={addCustomSkill}>
           <label className="block text-sm font-medium text-text-muted mb-2">Add Custom Skill</label>
-          <div className="flex gap-2">
+          <div className="flex gap-2 max-w-md">
             <input
               type="text"
               value={customSkill}

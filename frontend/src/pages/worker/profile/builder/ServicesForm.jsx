@@ -31,13 +31,13 @@ export default function ServicesForm() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-4xl mx-auto">
       <header className="bg-white p-4 flex items-center gap-4 shadow-sm">
         <button onClick={() => navigate(-1)}><ArrowLeft className="w-6 h-6" /></button>
         <h1 className="font-bold text-lg">Services & Pricing</h1>
       </header>
 
-      <div className="p-6 flex-1">
+      <div className="p-6 flex-1 max-w-3xl mx-auto">
         <p className="text-sm text-text-muted mb-6">
           List the specific services you offer and your standard rates.
         </p>
@@ -53,7 +53,7 @@ export default function ServicesForm() {
                   className="w-full p-3 rounded-xl border border-gray-200 focus:border-primary outline-none text-sm"
                 />
               </div>
-              <div className="w-28 space-y-2">
+              <div className="w-32 space-y-2">
                 <div className="relative">
                   <span className="absolute left-3 top-3 text-gray-500">₹</span>
                   <input

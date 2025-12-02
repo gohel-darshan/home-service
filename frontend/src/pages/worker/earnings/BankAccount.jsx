@@ -16,14 +16,14 @@ export default function BankAccount() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-4xl mx-auto">
       <header className="bg-white p-4 flex items-center gap-4 shadow-sm">
         <button onClick={() => navigate(-1)}><ArrowLeft className="w-6 h-6" /></button>
         <h1 className="font-bold text-lg">Add Bank Account</h1>
       </header>
 
       <div className="p-6 flex-1">
-        <form className="space-y-4">
+        <form className="space-y-4 max-w-md mx-auto lg:max-w-2xl">
           <div>
             <label className="block text-sm font-medium text-text-muted mb-1">Account Number</label>
             <input 

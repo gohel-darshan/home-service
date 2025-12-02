@@ -9,34 +9,36 @@ export default function EarningsHome() {
   const { earnings } = useWorker();
 
   return (
-    <div className="pb-24 pt-6 px-4 max-w-md mx-auto">
+    <div className="pb-24 pt-6 px-4 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">Earnings</h1>
 
-      {/* Wallet Card */}
-      <div className="bg-secondary text-white p-6 rounded-2xl mb-8 shadow-lg shadow-secondary/20">
-        <div className="flex items-center gap-2 mb-2 opacity-90">
-          <Wallet className="w-5 h-5" />
-          <span className="text-sm font-medium">Available Balance</span>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {/* Wallet Card */}
+        <div className="lg:col-span-2 bg-secondary text-white p-6 rounded-2xl shadow-lg shadow-secondary/20">
+          <div className="flex items-center gap-2 mb-2 opacity-90">
+            <Wallet className="w-5 h-5" />
+            <span className="text-sm font-medium">Available Balance</span>
+          </div>
+          <h2 className="text-4xl font-bold mb-6">₹{earnings.available}</h2>
+          <button 
+            onClick={() => navigate('/worker/earnings/withdraw')}
+            className="w-full bg-white text-secondary font-bold py-3 rounded-xl hover:bg-gray-50 transition"
+          >
+            Withdraw Money
+          </button>
         </div>
-        <h2 className="text-4xl font-bold mb-6">₹{earnings.available}</h2>
-        <button 
-          onClick={() => navigate('/worker/earnings/withdraw')}
-          className="w-full bg-white text-secondary font-bold py-3 rounded-xl hover:bg-gray-50 transition"
-        >
-          Withdraw Money
-        </button>
-      </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <Card className="p-4">
-          <p className="text-xs text-text-muted mb-1">Today's Earnings</p>
-          <p className="text-xl font-bold">₹850</p>
-        </Card>
-        <Card className="p-4">
-          <p className="text-xs text-text-muted mb-1">Total Earned</p>
-          <p className="text-xl font-bold">₹{earnings.total}</p>
-        </Card>
+        {/* Stats */}
+        <div className="space-y-4">
+          <Card className="p-4">
+            <p className="text-xs text-text-muted mb-1">Today's Earnings</p>
+            <p className="text-xl font-bold">₹850</p>
+          </Card>
+          <Card className="p-4">
+            <p className="text-xs text-text-muted mb-1">Total Earned</p>
+            <p className="text-xl font-bold">₹{earnings.total}</p>
+          </Card>
+        </div>
       </div>
 
       {/* History */}
@@ -46,7 +48,7 @@ export default function EarningsHome() {
           <button className="text-primary text-sm font-medium">View All</button>
         </div>
         
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
           {earnings.history.map((item) => (
             <div key={item.id} className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100">
               <div className="flex items-center gap-3">

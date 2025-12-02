@@ -15,13 +15,13 @@ export default function Withdraw() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-4xl mx-auto">
       <header className="bg-white p-4 flex items-center gap-4 shadow-sm">
         <button onClick={() => navigate(-1)}><ArrowLeft className="w-6 h-6" /></button>
         <h1 className="font-bold text-lg">Withdraw Money</h1>
       </header>
 
-      <div className="p-6 flex-1">
+      <div className="p-6 flex-1 max-w-md mx-auto lg:max-w-2xl">
         <div className="bg-white p-6 rounded-2xl border border-gray-100 mb-6 text-center">
           <p className="text-text-muted mb-2">Available Balance</p>
           <h2 className="text-3xl font-bold text-primary">₹{earnings.available}</h2>

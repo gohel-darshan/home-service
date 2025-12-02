@@ -83,108 +83,116 @@ export default function WorkerProfile() {
   }
 
   return (
-    <div className="pb-28 pt-6 px-4 max-w-md mx-auto">
+    <div className="pb-28 pt-6 px-4 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-6">My Profile</h1>
 
-      {/* Profile Header Card */}
-      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 mb-6">
-        <div className="flex items-center gap-4 mb-4">
-            <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200">
-                <img 
-                  src={profile.avatar || 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400'} 
-                  alt="Profile" 
-                  className="w-full h-full object-cover" 
-                  onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400';
-                  }}
-                />
-            </div>
-            <div className="flex-1">
-                <h2 className="font-bold text-lg flex items-center gap-1">
-                    {profile.name || 'Worker Name'}
-                    {profile.kycStatus === 'VERIFIED' && <ShieldCheck className="w-4 h-4 text-blue-500" />}
-                </h2>
-                <p className="text-text-muted text-sm">{profile.profession || 'Add your profession'}</p>
-                <p className="text-text-muted text-xs mt-0.5">{profile.phone || profile.email}</p>
-            </div>
-            <button onClick={() => navigate('/worker/onboarding/details')} className="p-2 text-primary hover:bg-blue-50 rounded-full">
-                <User className="w-5 h-5" />
-            </button>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        {/* Profile Header Card */}
+        <div className="lg:col-span-2 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+          <div className="flex items-center gap-4 mb-4">
+              <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200">
+                  <img 
+                    src={profile.avatar || 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400'} 
+                    alt="Profile" 
+                    className="w-full h-full object-cover" 
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400';
+                    }}
+                  />
+              </div>
+              <div className="flex-1">
+                  <h2 className="font-bold text-lg flex items-center gap-1">
+                      {profile.name || 'Worker Name'}
+                      {profile.kycStatus === 'VERIFIED' && <ShieldCheck className="w-4 h-4 text-blue-500" />}
+                  </h2>
+                  <p className="text-text-muted text-sm">{profile.profession || 'Add your profession'}</p>
+                  <p className="text-text-muted text-xs mt-0.5">{profile.phone || profile.email}</p>
+              </div>
+              <button onClick={() => navigate('/worker/onboarding/details')} className="p-2 text-primary hover:bg-blue-50 rounded-full">
+                  <User className="w-5 h-5" />
+              </button>
+          </div>
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-3 gap-2 border-t border-gray-100 pt-4">
-            <div className="text-center border-r border-gray-100">
-                <p className="text-xs text-text-muted mb-1">Rating</p>
-                <div className="flex items-center justify-center gap-1 font-bold text-sm">
-                    {stats.avgRating || profile.rating || 0} <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                </div>
-            </div>
-            <div className="text-center border-r border-gray-100">
-                <p className="text-xs text-text-muted mb-1">Jobs Done</p>
-                <p className="font-bold text-sm">{stats.completedJobs || profile.totalJobs || 0}</p>
-            </div>
-            <div className="text-center">
-                <p className="text-xs text-text-muted mb-1">Earned</p>
-                <p className="font-bold text-sm text-green-600">₹{stats.totalEarnings || earnings.total || 0}</p>
-            </div>
+        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+          <div className="space-y-4">
+              <div className="text-center">
+                  <p className="text-xs text-text-muted mb-1">Rating</p>
+                  <div className="flex items-center justify-center gap-1 font-bold text-sm">
+                      {stats.avgRating || profile.rating || 0} <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                  </div>
+              </div>
+              <div className="text-center border-t border-gray-100 pt-4">
+                  <p className="text-xs text-text-muted mb-1">Jobs Done</p>
+                  <p className="font-bold text-sm">{stats.completedJobs || profile.totalJobs || 0}</p>
+              </div>
+              <div className="text-center border-t border-gray-100 pt-4">
+                  <p className="text-xs text-text-muted mb-1">Earned</p>
+                  <p className="font-bold text-sm text-green-600">₹{stats.totalEarnings || earnings.total || 0}</p>
+              </div>
+          </div>
         </div>
       </div>
 
       {/* Menu Sections */}
-      <div className="space-y-6">
-        <div>
-            <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Business Settings</h3>
-            <MenuItem 
-                icon={Briefcase} 
-                label="Services & Pricing" 
-                subLabel="Manage your rate card"
-                onClick={() => navigate('/worker/profile/builder')} 
-                color="text-blue-600"
-            />
-            <MenuItem 
-                icon={Clock} 
-                label="Availability" 
-                subLabel="Set working hours"
-                onClick={() => navigate('/worker/profile/builder')} 
-                color="text-orange-600"
-            />
-            <MenuItem 
-                icon={ImageIcon} 
-                label="Portfolio" 
-                subLabel="Photos & Videos"
-                onClick={() => navigate('/worker/profile/builder')} 
-                color="text-purple-600"
-            />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="space-y-6">
+          <div>
+              <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Business Settings</h3>
+              <MenuItem 
+                  icon={Briefcase} 
+                  label="Services & Pricing" 
+                  subLabel="Manage your rate card"
+                  onClick={() => navigate('/worker/profile/builder')} 
+                  color="text-blue-600"
+              />
+              <MenuItem 
+                  icon={Clock} 
+                  label="Availability" 
+                  subLabel="Set working hours"
+                  onClick={() => navigate('/worker/profile/builder')} 
+                  color="text-orange-600"
+              />
+              <MenuItem 
+                  icon={ImageIcon} 
+                  label="Portfolio" 
+                  subLabel="Photos & Videos"
+                  onClick={() => navigate('/worker/profile/builder')} 
+                  color="text-purple-600"
+              />
+          </div>
         </div>
 
-        <div>
-            <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Account</h3>
-            <MenuItem 
-                icon={ShieldCheck} 
-                label="KYC Verification" 
-                subLabel={getKycStatusText(profile.kycStatus)}
-                onClick={() => navigate('/worker/kyc/status')} 
-                color={getKycStatusColor(profile.kycStatus)}
-                badge={
-                    <Badge variant={getKycBadgeVariant(profile.kycStatus)}>
-                        {getKycStatusText(profile.kycStatus)}
-                    </Badge>
-                }
-            />
-            <MenuItem 
-                icon={CreditCard} 
-                label="Bank Account" 
-                subLabel="Manage payouts"
-                onClick={() => navigate('/worker/earnings/bank')} 
-                color="text-gray-600"
-            />
-        </div>
+        <div className="space-y-6">
+          <div>
+              <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Account</h3>
+              <MenuItem 
+                  icon={ShieldCheck} 
+                  label="KYC Verification" 
+                  subLabel={getKycStatusText(profile.kycStatus)}
+                  onClick={() => navigate('/worker/kyc/status')} 
+                  color={getKycStatusColor(profile.kycStatus)}
+                  badge={
+                      <Badge variant={getKycBadgeVariant(profile.kycStatus)}>
+                          {getKycStatusText(profile.kycStatus)}
+                      </Badge>
+                  }
+              />
+              <MenuItem 
+                  icon={CreditCard} 
+                  label="Bank Account" 
+                  subLabel="Manage payouts"
+                  onClick={() => navigate('/worker/earnings/bank')} 
+                  color="text-gray-600"
+              />
+          </div>
 
-        <div>
-             <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Support</h3>
-             <MenuItem icon={HelpCircle} label="Help & Support" onClick={() => {}} />
-             <MenuItem icon={LogOut} label="Logout" color="text-red-500" onClick={handleLogout} />
+          <div>
+               <h3 className="font-bold text-sm text-text-muted uppercase tracking-wider mb-3 ml-1">Support</h3>
+               <MenuItem icon={HelpCircle} label="Help & Support" onClick={() => {}} />
+               <MenuItem icon={LogOut} label="Logout" color="text-red-500" onClick={handleLogout} />
+          </div>
         </div>
       </div>
     </div>
